@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingStart="4dp">
+
+        <!-- Priority badge -->
+        <TextView
+            android:id="@+id/tvTunnelPriority"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:textColor="#ffffff"
+            android:background="@drawable/priority_badge_bg"
+            android:layout_marginEnd="8dp" />
+
+        <!-- Info column -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTunnelName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tvTunnelAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:fontFamily="monospace"
+                android:textColor="#444444" />
+
+            <TextView
+                android:id="@+id/tvTunnelStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:textColor="#888888" />
+
+        </LinearLayout>
+
+        <!-- Action buttons column -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnTunnelUp"
+                android:layout_width="36dp"
+                android:layout_height="28dp"
+                android:text="▲"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textSize="10sp"
+                android:minWidth="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp" />
+
+            <Button
+                android:id="@+id/btnTunnelDown"
+                android:layout_width="36dp"
+                android:layout_height="28dp"
+                android:text="▼"
+                style="?android:attr/buttonBarButtonStyle"
+                android:textSize="10sp"
+                android:minWidth="0dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="0dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnTunnelDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ddns_remove"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textColor="#cc0000"
+            android:textSize="11sp" />
+
+    </LinearLayout>
+
+</layout>

@@ -1,0 +1,34 @@
+# Build and intermediate files
+build/
+.gradle/
+.idea/
+*.iml
+.DS_Store
+.navigation
+local.properties
+cache.properties
+build.xml
+proguard-project.txt
+
+# Native/NDK outputs and intermediates
+main/.cxx/
+main/.externalNativeBuild/
+main/obj/
+main/libs/
+main/ovpnlibs/
+main/openvpn3/
+main/src/ovpn3/java/net/openvpn/ovpn3/
+
+# External libraries and SDKs
+google-breakpad/
+ovpn3/boost/
+polarssl/
+
+# Static analysis and tools
+.synopsys/
+polaris.yml
+.coverity
+idir/
+
+# Configs not meant for source control
+test.local.conf

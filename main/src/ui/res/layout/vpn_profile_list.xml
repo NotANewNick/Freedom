@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2012-2016 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/stdpadding"
+            android:paddingRight="@dimen/stdpadding">
+
+            <TextView
+                android:id="@+id/notification_permission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/stdpadding"
+                android:drawableStart="@drawable/notifications"
+                android:drawablePadding="@dimen/stdpadding"
+                tools:visibility="gone"
+                android:visibility="gone"
+                android:text="@string/missing_notification_permission" />
+
+            <ListView
+                android:id="@android:id/list"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:descendantFocusability="afterDescendants"
+                android:visibility="gone"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/activity_vertical_margin"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="20dp"
+                    android:background="#E44CAF50"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:text="@string/status"
+                    android:textColor="#000"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvWorkVsPrivate"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:text="@string/work_vs_private"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <ProgressBar
+                        android:id="@+id/pbWorkVsPrivate"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="230dp"
+                        android:layout_height="230dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/custom_progressbar_drawable"
+                        android:secondaryProgress="0" />
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_centerInParent="true">
+
+                        <TextView
+                            android:id="@+id/tvWorkVsPrivateProgress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0 %"
+                            android:layout_gravity="center"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/tvWorkVsPrivateStats"
+                            android:layout_width="132dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/private_text"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:layout_below="@id/tvWorkVsPrivateProgress"/>
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+                <TextView
+                    android:id="@+id/tvAverageTrip"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center"
+                    android:layout_marginTop="25dp"
+                    android:text="@string/average_trips"
+                    android:textAppearance="?android:attr/textAppearanceLarge" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <ProgressBar
+                        android:id="@+id/pbAverageTrip"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="230dp"
+                        android:layout_height="230dp"
+                        android:layout_centerInParent="true"
+                        android:background="@drawable/circle_shape"
+                        android:indeterminate="false"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/custom_progressbar_drawable"
+                        android:secondaryProgress="0" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_centerInParent="true">
+
+                        <TextView
+                            android:id="@+id/tvAverageTripProgress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_alignBottom="@+id/progressBar"
+                            android:text="0 %"
+                            android:textSize="30sp" />
+
+                        <TextView
+                            android:id="@+id/tvAverageTripStats"
+                            android:layout_width="132dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:gravity="center"
+                            android:text="@string/average_per_day"
+                            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <Button
+                        android:id="@+id/btnClearData"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="@string/stop_service" />
+
+                    <ListView
+                        android:id="@+id/lvData"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="20dp"
+                        android:scrollbars="vertical" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@android:id/empty"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_vpn_profiles_defined"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="gone"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12sp"
+                    android:visibility="gone"/>
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:autoLink="web"
+                    android:text="@string/openvpn_is_no_free_vpn"
+                    android:visibility="gone"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12sp"
+                    android:visibility="gone"/>
+
+
+                <TextView
+                    android:id="@+id/add_new_vpn_hint"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SelectableText"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/import_vpn_hint"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    tools:ignore="SelectableText"
+                    android:visibility="gone"/>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="12sp"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/faq_hint"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tab icon: tunnel entrance — three concentric arches suggesting depth -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Ground line -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M1,21 L23,21 L23,22.5 L1,22.5 Z" />
+
+    <!-- Outer arch -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:fillAlpha="0"
+        android:pathData="M2,21 A10,11 0 0,1 22,21" />
+
+    <!-- Middle arch -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.8"
+        android:fillAlpha="0"
+        android:pathData="M5,21 A7,8 0 0,1 19,21" />
+
+    <!-- Inner arch (filled dark centre = tunnel depth) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:fillAlpha="0"
+        android:pathData="M8,21 A4,5 0 0,1 16,21" />
+
+    <!-- Dark filled centre to suggest tunnel opening -->
+    <path
+        android:fillColor="#1A237E"
+        android:pathData="M8,21 A4,5 0 0,1 16,21 Z" />
+
+</vector>

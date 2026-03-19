@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tab icon: speech bubble with a small lock badge -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Speech bubble body -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="
+            M3,3 Q3,2 4,2 L20,2 Q21,2 21,3 L21,14
+            Q21,15 20,15 L13,15 L10,18 L10,15 L4,15
+            Q3,15 3,14 Z
+        " />
+
+    <!-- Three text lines inside bubble (punched out via evenOdd) -->
+    <path
+        android:fillColor="#1A237E"
+        android:pathData="
+            M6,6 L18,6 L18,7.5 L6,7.5 Z
+            M6,9 L18,9 L18,10.5 L6,10.5 Z
+            M6,12 L14,12 L14,13.5 L6,13.5 Z
+        " />
+
+</vector>

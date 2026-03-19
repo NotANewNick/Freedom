@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Tab icon: three horizontal sliders (settings/filters) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Slider track 1 -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M2,5 L22,5 L22,7 L2,7 Z" />
+    <!-- Slider handle 1 (at x=7) -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M4.5,6 A2.5,2.5 0 0,1 9.5,6 A2.5,2.5 0 0,1 4.5,6 Z" />
+    <!-- Cutout for handle on track 1 -->
+    <path android:fillColor="#1A237E"
+        android:pathData="M4.5,5 L9.5,5 L9.5,7 L4.5,7 Z" />
+    <!-- Redraw handle 1 on top -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M4.5,3.5 A2.5,2.5 0 1,0 9.5,3.5 A2.5,2.5 0 1,0 4.5,3.5 Z" />
+
+    <!-- Slider track 2 -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M2,11 L22,11 L22,13 L2,13 Z" />
+    <!-- Slider handle 2 (at x=17) -->
+    <path android:fillColor="#1A237E"
+        android:pathData="M14.5,11 L19.5,11 L19.5,13 L14.5,13 Z" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M14.5,9.5 A2.5,2.5 0 1,0 19.5,9.5 A2.5,2.5 0 1,0 14.5,9.5 Z" />
+
+    <!-- Slider track 3 -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M2,17 L22,17 L22,19 L2,19 Z" />
+    <!-- Slider handle 3 (at x=12) -->
+    <path android:fillColor="#1A237E"
+        android:pathData="M9.5,17 L14.5,17 L14.5,19 L9.5,19 Z" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M9.5,15.5 A2.5,2.5 0 1,0 14.5,15.5 A2.5,2.5 0 1,0 9.5,15.5 Z" />
+
+</vector>

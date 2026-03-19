@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Adaptive icon foreground — white shield with keyhole cutout.
+    Designed for the 108dp canvas; artwork sits inside the 18–90dp safe zone.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!--
+        Single path, fillType evenOdd:
+          1. Outer shield shape
+          2. Circular lock-head cutout  (traces CW → punches hole)
+          3. Keyhole slot cutout        (traces CW → punches hole)
+    -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="
+            M54,20 L84,30 L84,58 Q84,76 54,90 Q24,76 24,58 L24,30 Z
+
+            M54,36
+            A10,10 0 0,1 64,46
+            A10,10 0 0,1 54,56
+            A10,10 0 0,1 44,46
+            A10,10 0 0,1 54,36 Z
+
+            M49,56 L59,56 L57,70 L51,70 Z
+        " />
+
+</vector>

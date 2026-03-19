@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2012-2025 Arne Schwabe
+  ~ Distributed under the GNU GPL v2 with additional terms. For full terms see the file doc/LICENSE.txt
+  -->
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/llConfigure"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff"
+        android:orientation="vertical"
+        android:padding="@dimen/activity_vertical_margin">
+
+        <TextView
+            android:id="@+id/tvSupportedDevice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/supported_device"
+            android:textAllCaps="false"
+            android:textColor="#000"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Spinner
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            app:layout_constraintStart_toEndOf="@id/tvSupportedDevice"
+            app:layout_constraintTop_toTopOf="@id/tvSupportedDevice"
+            android:entries="@array/device_list"
+            android:text="GV500MA"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="15dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@id/tvSupportedDevice">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/etSimNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="SIM Number"
+                    android:inputType="phone"
+                    android:maxLength="20"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvSupportedDevice" />
+
+                <EditText
+                    android:id="@+id/etApnDevice"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="APN for device"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etSimNumber" />
+
+                <EditText
+                    android:id="@+id/etDestinationAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="10dp"
+                    android:hint="Destination Address"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etApnDevice" />
+
+                <LinearLayout
+                    android:id="@+id/llPort"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:weightSum="2">
+
+                    <EditText
+                        android:id="@+id/etPort"
+                        android:layout_width="0dp"
+                        android:layout_height="50dp"
+                        android:layout_marginTop="10dp"
+                        android:hint="Port"
+                        android:layout_weight="1.5"
+                        android:textSize="18sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/etDestinationAddress" />
+
+                    <Button
+                        android:id="@+id/btnApply"
+                        style="@style/buttonStyle"
+                        android:layout_width="0dp"
+                        android:layout_height="45dp"
+                        android:layout_weight="0.5"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/apply"
+                        app:layout_constraintBottom_toBottomOf="parent" />
+                </LinearLayout>
+
+
+                <EditText
+                    android:id="@+id/etMsgBody1"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:singleLine="true"
+                    android:layout_marginTop="10dp"
+                    android:hint="Type a message"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llPort" />
+
+                <EditText
+                    android:id="@+id/etMsgBody2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:singleLine="true"
+                    android:layout_marginTop="10dp"
+                    android:hint="Type a message"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etMsgBody1" />
+
+                <EditText
+                    android:id="@+id/etMsgBody3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:singleLine="true"
+                    android:layout_marginTop="10dp"
+                    android:hint="Type a message"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etMsgBody2" />
+                <EditText
+                    android:id="@+id/etMsgBody4"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:singleLine="true"
+                    android:minLines="1"
+                    android:layout_marginTop="10dp"
+                    android:hint="Type a message"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/etMsgBody3" />
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <Button
+            android:id="@+id/btnConfigure"
+            style="@style/buttonStyle"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:text="@string/configure"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

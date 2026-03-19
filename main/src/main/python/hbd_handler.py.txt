@@ -1,0 +1,114 @@
+import sys
+import traceback
+from parse_aschex_exception import *
+from parse_aschex_util import *
+
+hbd_mask_length = 0x01
+hbd_mask_dev_type = 0x02
+hbd_mask_pr_ver = 0x04
+hbd_mask_fm_ver = 0x08
+
+hbd_mask_dev_name = 0x10
+hbd_mask_send_t = 0x20
+hbd_mask_cn = 0x40
+hbd_mask_uid = 0x80
+
+#########################################
+# External Interface
+#########################################
+def parse_aschex_report_hbd(aschex_report):
+    asc_report = []
+    len_parsed = 0
+    mask = 0
+    msg_arg = {}
+    dbg_on = get_dbg_on()
+    try:
+        hbd_frame = aschex_report
+        #print '+HBD:', hbd_frame
+
+        len_parsed += get_header(asc_report, hbd_frame[len_parsed:])[1]
+
+        dbg_print(dbg_on, 'mask: %s' % hbd_frame[len_parsed:])
+        mask, len_field = get_hbd_mask(asc_report, hbd_frame[len_parsed:])
+        len_parsed += len_field
+        msg_arg['mask'] = mask
+        #print 'mask: 0x%02X' % mask
+
+        if mask & hbd_mask_length:
+            dbg_print(dbg_on, 'length: %s' % hbd_frame[len_parsed:])
+            length, len_field = get_hbd_length(asc_report, hbd_frame[len_parsed:])
+            len_parsed += len_field
+            msg_arg['length'] = length
+
+        if mask & hbd_mask_dev_type:
+            dbg_print(dbg_on, 'dev_type: %s' % hbd_frame[len_parsed:])
+            dev_type, len_field = get_dev_type(asc_report, hbd_frame[len_parsed:])
+            len_parsed += len_field
+            msg_arg['dev_type'] = dev_type
+
+        if mask & hbd_mask_pr_ver:
+            dbg_print(dbg_on, 'pr_ver: %s' % hbd_frame[len_parsed:])
+            pr_ver, len_field = get_protocol_version(asc_report, hbd_frame[len_parsed:])
+            len_parsed += len_field
+            msg_arg['pr_ver'] = pr_ver
+
+        if mask & hbd_mask_fm_ver:
+            dbg_print(dbg_on, 'fm_ver: %s' % hbd_frame[len_parsed:])
+            fm_ver, len_field = get_firmware_version(asc_report, hbd_frame[len_parsed:])
+            len_parsed += len_field
+            msg_arg['fm_ver'] = fm_ver
+
+        if mask & hbd_mask_uid:
+            if mask & hbd_mask_dev_name:
+                dbg_print(dbg_on, 'dev_name: %s' % hbd_frame[len_parsed:])
+                dev_name, len_field = get_dev_name(asc_report, hbd_frame[len_parsed:])
+                msg_arg['dev_name'] = dev_name
+            else:
+                dbg_print(dbg_on, 'UID: %s' % hbd_frame[len_parsed:])
+                uid, len_field = get_uid(asc_report, hbd_frame[len_parsed:])
+                msg_arg['uid'] = uid
+            len_parsed += len_field
+
+        if mask & hbd_mask_send_t:
+            dbg_print(dbg_on, 'send_time: %s' % hbd_frame[len_parsed:])
+            send_t, len_field = get_send_time(asc_report, hbd_frame[len_parsed:])
+            len_parsed += len_field
+            msg_arg['send_t'] = send_t
+
+        if mask & hbd_mask_cn:
+            dbg_print(dbg_on, 'cn: %s' % hbd_frame[len_parsed:])
+            cn, len_field = get_count_number(asc_report, hbd_frame[len_parsed:])
+            len_parsed += len_field
+            msg_arg['cn'] = cn
+        else:
+            msg_arg['cn'] = None
+
+        dbg_print(dbg_on, 'crc: %s' % hbd_frame[len_parsed:])
+        crc16, len_field = get_checksum(asc_report, hbd_frame[len_parsed:])
+        len_parsed += len_field
+        msg_arg['crc16'] = crc16
+
+        checksum = verify_crc16(hbd_frame[len_header*len_byte:len_parsed], crc16)
+        msg_arg['checksum'] = checksum
+
+        dbg_print(dbg_on, 'tail: %s' % hbd_frame[len_parsed:])
+        tail, len_field = get_tail(asc_report, hbd_frame[len_parsed:])
+        len_parsed += len_field
+        if tail.upper() != '0D0A':
+            print ('Fail to verify tail: %s' % tail)
+            raise ParseTailError
+
+        if mask & hbd_mask_length and length*len_byte != len_parsed:
+            print ('Length does not match: Report: %d != Actual: %d' % (length, len_parsed/len_byte))
+            raise ParseLengthError
+
+        msg_arg['asc_report'] = asc_report
+    except:
+        print ('-'*40)
+        print ('Parse Hex HBD format error: ', sys.exc_info()[0])
+        print (aschex_report)
+        print (asc_report)
+        traceback.print_exc() # XXX But this goes to stderr!
+        print ('-'*40)
+        raise ParseFormatError
+    return msg_arg, len_parsed
