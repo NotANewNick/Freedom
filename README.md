@@ -49,7 +49,6 @@ Freedom creates encrypted tunnels directly between devices. Every message is enc
 You  ──[OTP encrypted]──>  Tunnel  ──[OTP encrypted]──>  Contact
          ^                                                  ^
      Your keys                                        Their keys
-     (24KB each)                                      (24KB each)
      One-time pad                                     One-time pad
 ```
 
@@ -57,7 +56,7 @@ You  ──[OTP encrypted]──>  Tunnel  ──[OTP encrypted]──>  Contact
 
 ### Messaging
 - **True peer-to-peer** -- Direct device-to-device connections, no relay servers
-- **Per-contact encryption** -- Every contact gets unique 24KB send/receive key pairs (true OTP)
+- **Per-contact encryption** -- Every contact gets unique send/receive key pairs (true OTP)
 - **Auto key rotation** -- Keys rotate automatically after a configurable message threshold
 - **Offline message delivery** -- Messages queue locally and deliver automatically when the contact comes back online
 - **Encrypted file transfer** -- per-transfer Diffie–Hellman (X25519) key agreement: only the public values cross the secure channel, then the file is streamed under a ChaCha20 keystream — so large files never spend your one-time-pad message keys
